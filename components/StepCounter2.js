@@ -24,7 +24,7 @@ export default function App() {
                     if (
                         Math.abs(y - lastY) > threshold &&
                         !isCounting &&
-                        timestamp - lastTimestamp > 500 // Reduce cooldown time to 500 milliseconds
+                        timestamp - lastTimestamp > 1000 // Reduce cooldown time to 500 milliseconds
                     ) {
                         setIsCounting(true);
                         setLastY(y);
@@ -66,12 +66,14 @@ export default function App() {
     return (
         <ScrollView>
             <SafeAreaView style={styles.container}>
+                <View style={styles.containers}>
                 <Text style={styles.title}>Step tracker</Text>
                 <View style={styles.infoContainer}>
                     <View style={styles.stepsContainer}>
                         <Text style={styles.stepsText}>{steps}</Text>
                         <Text style={styles.stepsLabel}>Movements</Text>
                     </View>
+                </View>
                 </View>
                 <View style={styles.animationContainer}>
                     {isCounting ? (
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#e0e0e0',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 30,
     },
     title: {
         fontSize: 28,
